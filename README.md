@@ -7,4 +7,24 @@ The goal is to utilize industry standard techniques to develop a secure messagin
 <img src="https://github.com/Donnie-Stewart/Secure_Message_System/blob/main/overall_arch.png" align="right"
       width="350" height="750">
 
-## test
+## Block Cipher Overview:
+
+## Input & Key Ratcheting:
+
+## Hashing:
+
+## Key agreement Protocol & Elliptic Curve:
+
+## P-521 Signature:
+
+## Simon Block Cipher:
+
+## Block Cipher Mode of Operation - CTR:
+
+## Decryption:
+
+## Verification:
+
+# Usage:
+
+# Credits:
