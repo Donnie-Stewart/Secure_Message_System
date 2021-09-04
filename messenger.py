@@ -62,7 +62,7 @@ def key_stream(key, ctr_list):
 def create_cipher_text(key, plain_text):
     counter_mode_input = []
     cipher = ""
-    for i in range(len(plain_text), 0, -32):
+    for i in range(len(plain_text), 0, -32):            #seperate into blocks (first block usually not 32)
         if i - 32 >= 0:
             counter_mode_input.append(plain_text[i-32:i])
         else:
@@ -115,7 +115,9 @@ def message(message, name = None, new_priv_a = None):
     if name != None:
         write_to_aws(cipher_X, name)
         return "success", A_prime_priv
-    return cipher_X
+    else:
+        return cipher_X, A_prime_priv
+    # return cipher_X
 
 
 
@@ -183,25 +185,29 @@ def received_message(cipher_X, name = None, A_prev = None):
     return A_prime
 
 # plain_text = input("Enter a plain text message you want to send (ex: dolstewa@ucsc.edu)\n")
-# plain_text = "dolstewa@ucsc.edu"
-# cipher_X = message(plain_text)
-# print("cipher-text corresponding to message:\n", cipher_X)
-#
-# received_message(cipher_X)
-
-names = ["donFirstMessage", "donSecondMessage", "donThirdMessage", "donFourthMessage"]
-# names = ["donMessage1", "donMessage2", "donMessage3"]
+plain_text = ["dolstewa@ucsc.edu", "walkit talk it", "whhoooop", "drinkooo"]
 a = None
 a_prev = None
-#surya's initial point
-# pub_A = point(int("1c5a70bdd5f01a723300e37619b7736410173209edd729a46a11a2d948cdf9146056924d29f0865e07cf5ec3f257dcdcb5dcd23917f1058993aadad8bfe39bf0f6a",16), int("182efcf99db788dcd911cb9de3cbe7ae2432672d5722891d73d78f879dfe622d987d3218a27e5bef9981bd6369f5cdcb9b45b331d1a9389f1bf668bbfa7b0aba31a",16))
-for n in names:
-    print(f"---- For the file {n} ---- \n")
-    succ, a = message("Random message " + n, n, a)
-    a_prev = received_message(None, n, a_prev)
+for p in plain_text:
+    cipher_X, a = message(p, new_priv_a = a)
+    print("cipher-text corresponding to message:\n", cipher_X)
+
+    a_prev = received_message(cipher_X, A_prev = a_prev)
+
+# names = ["donFirstMessage", "donSecondMessage", "donThirdMessage", "donFourthMessage"]
+# # names = ["donMessage1", "donMessage2", "donMessage3"]
+# a = None
+# a_prev = None
+# #surya's initial point
+# # pub_A = point(int("1c5a70bdd5f01a723300e37619b7736410173209edd729a46a11a2d948cdf9146056924d29f0865e07cf5ec3f257dcdcb5dcd23917f1058993aadad8bfe39bf0f6a",16), int("182efcf99db788dcd911cb9de3cbe7ae2432672d5722891d73d78f879dfe622d987d3218a27e5bef9981bd6369f5cdcb9b45b331d1a9389f1bf668bbfa7b0aba31a",16))
+# for n in names:
+#     print(f"---- For the file {n} ---- \n")
+#     succ, a = message("Random message " + n, n, a)
+#     a_prev = received_message(None, n, a_prev)
 
 
-
+# print("Firtst Try")
+# c = message("")
 
 
 

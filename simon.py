@@ -175,6 +175,7 @@ class Simon():
 #     x = Simon("1f1e1d1c1b1a191817161514131211100f0e0d0c0b0a09080706050403020100")
 #     print("Encrypting...")
 #     c = x.encrypt("74206e69206d6f6f6d69732061207369" )
+#     print("ciphertext is",c)
 #     print("Decrypting...")
 #     i = x.decrypt(c)
 #     print("recovered plaintext is",i)

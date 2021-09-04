@@ -88,6 +88,9 @@ class P521():
         v = (V.x)%self.q
         return v == r
 
+# curve = P521()
+# curve.set_private_x(1636237)
+# print(curve.pub_X)
 
 # bool = verification(s, q, h_m, P, pub_X, R.x, p)
 # print("the test passed:", bool)

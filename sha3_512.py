@@ -114,15 +114,14 @@ def SHA3_512(input):
     output = Keccak(rate, capacity, input, 0x06, 512//8)
     return ''.join('{:02x}'.format(x) for x in output)
 
-###################### take input ##########################
-# input = input("Enter string to receive sha3 hash:")
-# print("Encrypting:\n",input)
-# # input = [int(hex(ord(i)),16) for i in input]
-# # input = [int(input[x:x+2],16) for x in range(0, len(input), 2)]
-# #################### parse output ###########################
-# output = SHA3_512(input)
-# output =
-#line above came from: https://stackoverflow.com/questions/19210414/byte-array-to-hex-string
 
-# print("Your output block:")
-# print((output))
+
+
+
+
+
+
+
+
+
+####
