@@ -1,1 +1,3 @@
-This is the Secure Message System Repo. The goal is to utilize industry standard techniques to develop a secure messaging system where Alice can send Bob messages in an insecure channel such that the information sent over the channel is indecipherable to the attacker, Eve. Will highlight the procedure below and explain the main techniques incorporated such as Hashing, Signing & Authentication, Key Ratcheting, Encryption & Decryption, and the Block Cipher Mode of Operation.
+# This is the Secure Message System Repo.
+
+The goal is to utilize industry standard techniques to develop a secure messaging system where Alice can send Bob messages in an insecure channel such that the information sent over the channel is indecipherable to the attacker, Eve. Will highlight the procedure below and explain the main techniques incorporated such as **Hashing, Signing & Authentication, Key Ratcheting, Encryption & Decryption, and the Block Cipher Mode of Operation.**
