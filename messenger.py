@@ -48,12 +48,16 @@ def simon_input(s,r, A_prime, message, x, B):
 
 
 def key_stream(key, ctr_list):
+    """
+
+    """
     keys = []
     for i in range(1,len(ctr_list)+1):
-        S = Simon(key)
+        S = Simon(key) #64 bit key that is the x coordinate value of agreed k
         input = (hex(i)[2:]).zfill(32)
         k = S.encrypt(input)
-        keys.append(k)
+        keys.append(k) #keys are 128 bits that get XORed with each block
+
     # remove the extra keystream for the MSB block
     keys[0] = keys[0][-len(ctr_list[0]):]
     return keys
@@ -71,6 +75,7 @@ def create_cipher_text(key, plain_text):
     key_list = key_stream(key, counter_mode_input)
 
     for i in range(len(counter_mode_input)):
+        #xor 64bit keys from simon key stream with each bloack of the plain text. 
         new_block = int(key_list[i],16) ^ int(counter_mode_input[i],16)
         if i > 0:
             new_block = (str(hex(new_block)[2:].zfill(32)))
@@ -81,7 +86,7 @@ def create_cipher_text(key, plain_text):
 
 
 def message(message, name = None, new_priv_a = None):
-    #create a'
+    #create a' (next key to be used: Key Ratcheting)
     A_prime_priv, A_prime_pub = gen_keys()
     A_prime = compress(A_prime_pub)
 
