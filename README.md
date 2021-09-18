@@ -22,11 +22,15 @@ The first stage of the crypto-system is to produce the hash of the successive ke
 
 ## P-521 Signature:
 
-The second stage is to create a digital signature of the payload. Input is the SHA3 hash of the new key material and message s.t. P-521(SHA3-Hash_a) = r, s . These values r and s are the values that represent Alice's digital signature.
+The second stage is to create a digital signature of the payload. Input is the SHA3 hash of the new key material and message s.t. P-521(SHA3_Hash<sub>a</sub>) = r, s . These values r and s are the values that represent Alice's digital signature.
 - The signature, and the original A' and message (not the hash) is the input for encryption.
 
 ## Key agreement Protocol & Elliptic Curve:
 
+To encrypt and decrypt Alice and Bob need to agree on a Key through the insecure channel. Utilizing the one-way nature of Elliptic Curve point multiplication, they can agree on the same key without an attacker, Eve, obtaining the key material.
+- Alice creates a temporary public key X = xP. She uses the private x and Bob's public B to compute the Key material. Bob uses his private b and Public X to obtain the same key. As long as neither b or x is sent to the channel, Eve cannot compute the agreed key: k.
+- Alice: xB = (xbP) = k
+- Bob:   bX = (bxP) = k
 
 ## Simon Block Cipher:
 
