@@ -18,7 +18,7 @@ Public Key material is generated and exchanged between Alice and Bob. First, the
 
 ## Hashing:
 
-The first stage of the crypto-system is to produce the hash of the successive key material and message s.t. when Alice is sending Bob a message she will take the SHA3-Hash-Function( A' + message) = SHA3-Hash_a . The hash of the input is a fixed size (512b) which is fast to take a digital signature of. Verifying the signature of a hashed message ensures the original message is untampered.
+The first stage of the crypto-system is to produce the hash of the successive key material and message s.t. when Alice is sending Bob a message she will take the $SHA3-Hash-Function( A' + message) = SHA3-Hash_a$ . The hash of the input is a fixed size (512b) which is fast to take a digital signature of. Verifying the signature of a hashed message ensures the original message is untampered.
 
 ## P-521 Signature:
 
