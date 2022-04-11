@@ -45,6 +45,6 @@ The key
 
 # Usage:
 <img src="https://github.com/Donnie-Stewart/Secure_Message_System/blob/main/first_msg.png" align="center"
-      width="250" height="500">
+      width="700" height="500">
 
 # Credits:
