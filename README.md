@@ -44,7 +44,9 @@ The key
 ## Verification:
 
 # Usage:
+To use simply pull in and run the main file - messenger.py - as seen below. 
+There is a display prompt that takes in user input to either encrypt or decrypt a message. Selecting either will require a file name to read or write from. Selecting E, will encrpt the message into a file follow the practices list above. Selecting D, will read from that file and will display the recovered message with a verifcation. If the message verification is False, then the message recovered has been tampered with. 
 <img src="https://github.com/Donnie-Stewart/Secure_Message_System/blob/main/first_msg.png" align="center"
-      width="700" height="500">
+      width="900" height="500">
 
 # Credits:
