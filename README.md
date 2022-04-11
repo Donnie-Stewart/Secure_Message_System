@@ -43,10 +43,13 @@ The key
 
 ## Verification:
 
-# Usage:
+## Usage:
 To use simply pull in and run the main file - messenger.py - as seen below. 
 There is a display prompt that takes in user input to either encrypt or decrypt a message. Selecting either will require a file name to read or write from. Selecting E, will encrpt the message into a file using all the practices described above. Selecting D, will read from that file and will display the recovered message with a verifcation. If the message verification is False, then the message recovered has been tampered with. In this case, the message "Hello Bob!" is encrypted into the file "first_message.txt". Immeadiately afterwards, D(ecrypt) is selected for the file "first_message.txt". The cipher text contained in the file is then displayed and then the process of decryption follows. Once completed, the recovered message and verification. is displayed. 
 <img src="https://github.com/Donnie-Stewart/Secure_Message_System/blob/main/first_msg.png" align="center"
       width="1000" height="400">
-
-# Credits:
+## Tampered File Example:
+One security guarantee of this system includes determining whether files are tampered with before they are received. Below, the conversation is continued by encrypting another message "How are you?" to file "second_message". In between the completion of this command, and Decrypt, I manually went into the file and changed the last digit from a [5](https://github.com/Donnie-Stewart/Secure_Message_System/blob/main/untampered.png) to [4](https://github.com/Donnie-Stewart/Secure_Message_System/blob/main/tampered.png). As seen, this slightly currupts the recovered message and then causes the verification to fail. Verification is a vital security component when communicating over the internet. In this project, ECDSA ensures the authenticity of each message. 
+<img src="https://github.com/Donnie-Stewart/Secure_Message_System/blob/main/snd_msg.png" align="center"
+      width="1000" height="400">
+## Credits:
