@@ -1,7 +1,9 @@
 #simon cipher
 import copy
 class Simon():
-
+    """
+    Block encryption mechanism based on NIST implementation.
+    """
     def __init__(self, key, option = "&"):
 
         self.rounds = 72
@@ -10,7 +12,6 @@ class Simon():
         #convert strings to lists for comparison
         self.z4 = "11010001111001101011011000100000010111000011001010010011101111"
         self.z4 = self.string_list(self.z4)
-        # self.plain_text = self.hex_to_binary(plain_text)
         self.key = []
         tmp = self.hex_to_binary(key)
         #for efficient sub list creation i used:
@@ -33,7 +34,6 @@ class Simon():
             new_key[-1] = str(int(new_key[-1]) ^ 1)
             new_key[-2] = str(int(new_key[-2]) ^ 1)
             self.key.append(new_key)
-            # print(i, self.list_to_hex(self.key[i]))
 
     def encrypt(self, cipher):
         cipher = self.hex_to_binary(cipher)
@@ -42,10 +42,7 @@ class Simon():
         c2 = cipher[l:len(cipher)]
         x = c1
         y = c2
-        # self.key_expansion()
-        # x = self.plain_text[0:64]
-        # y = self.plain_text[64:128]
-        # print(self.list_to_hex(x), self.list_to_hex(y))
+
         for i in range(72):
             s1,s2,s8, res, res1, res2,res3 = [],[],[], [], [],[],[]
             tmp = copy.deepcopy(x)
@@ -67,8 +64,6 @@ class Simon():
 
             x = copy.deepcopy(res3)
             y = copy.deepcopy(tmp)
-        # print(i+1)
-        # print("The cipher text is:",self.list_to_hex(x), self.list_to_hex(y))
 
         self.cipher_text.append(x)
         self.cipher_text.append(y)
@@ -88,7 +83,6 @@ class Simon():
         c2 = cipher[l:len(cipher)]
         x = c1
         y = c2
-        # print(self.list_to_hex(x), self.list_to_hex(y))
         for i in range(72):
             s1,s2,s8, res, res1, res2,res3 = [],[],[], [], [],[],[]
             tmp = copy.deepcopy(y)
@@ -118,10 +112,6 @@ class Simon():
         y = ''.join(y)
         return x + y
 
-        # print("The recovered Plain Text is:",self.list_to_hex(x), self.list_to_hex(y))
-
-        # self.cipher_text.append(x)
-        # self.cipher_text.append(y)
 
     def and_func(self, list1, list2):
         result = []
@@ -167,16 +157,3 @@ class Simon():
                 str1+= j
             res.append(hex(int(str1, 2)))
          return res
-
-# def Main():
-#     # plain_text = input("Enter 128b hex plain text  (ex: 74206e69206d6f6f6d69732061207369)\n")
-#     # key = input("Enter 256b hex key  (ex: 1f1e1d1c1b1a191817161514131211100f0e0d0c0b0a09080706050403020100)\n")
-#     # option = input("Enter ^ for simplesimon or & for regular\n")
-#     x = Simon("1f1e1d1c1b1a191817161514131211100f0e0d0c0b0a09080706050403020100")
-#     print("Encrypting...")
-#     c = x.encrypt("74206e69206d6f6f6d69732061207369" )
-#     print("ciphertext is",c)
-#     print("Decrypting...")
-#     i = x.decrypt(c)
-#     print("recovered plaintext is",i)
-# Main()

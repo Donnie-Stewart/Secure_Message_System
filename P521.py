@@ -2,12 +2,21 @@ import sympy
 
 
 class point():
+    """
+    Point constructor for Elliptic Curve
+    """
     def __init__(self, x, y):
         self.x = x
         self.y = y
     def __str__(self):
         return "(%s, %s)" % (self.x, self.y)
 class P521():
+    """
+    NIST elliptic curve -> generates a point based on RNG is messenger client.
+    Used by messenger client for:
+        - pulic key encryption of key material
+        - creating & verifying signatures.
+    """
     def __init__(self):
         self.p = 6864797660130609714981900799081393217269435300143305409394463459185543183397656052122559640661454554977296311391480858037121987999716643812574028291115057151
         self.q = 6864797660130609714981900799081393217269435300143305409394463459185543183397655394245057746333217197532963996371363321113864768612440380340372808892707005449
@@ -51,26 +60,12 @@ class P521():
         self.priv_x = priv_x
         self.pub_X = self.double_and_add(priv_x, self.P, self.p)
 
-    # m = "dolstewa@ucsc.edu"
-    # h_m = "6ceec71c1b132c8bf319a83881928815796e46bd2c536f5fe27c8c04d4b13196e5502fca8a6f76458818f6b50eb3ed2680ec9e0237f0538f81f94410266c754c"
-    # h_m  = int(h_m, 16)
-    # self.ephermeral = 7326361
-    # self.R = double_and_add(7326361, P, p)
-    # print("R is :\n", R)
     def create_sig(self, h_m):
         h_m  = int(h_m, 16)
         x_r = (self.priv_x*self.R.x)%self.q
-        # print("xr is :\n", x_r)
-        # print("n inverse is :\n", n_inverse)
         paren = h_m + x_r
         self.s = (paren * self.ephermeral_inverse)%self.q
         return self.s, self.R.x
-
-
-    # s = create_sig(h_m, pri_x, R.x, n_inverse, q)
-
-    # print("s is:\n",s)
-    # print("r is:\n",R.x )
 
 
     def verification(self, s, h_m, pub_X, r):
@@ -87,19 +82,6 @@ class P521():
         # print("V is :\n", V)
         v = (V.x)%self.q
         return v == r
-
-# curve = P521()
-# curve.set_private_x(1636237)
-# print(curve.pub_X)
-
-# bool = verification(s, q, h_m, P, pub_X, R.x, p)
-# print("the test passed:", bool)
-
-
-
-
-
-
 
 
 
