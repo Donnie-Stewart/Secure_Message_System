@@ -34,6 +34,9 @@ To encrypt and decrypt Alice and Bob need to agree on a Key through the insecure
 
 ## Simon Block Cipher:
 
+This cipher is apart of the family of lightweight block ciphers created by the NSA. This algorithm has been rigorously tested and is considered to be secure.
+The key
+
 ## Block Cipher Mode of Operation - CTR:
 
 ## Decryption:
