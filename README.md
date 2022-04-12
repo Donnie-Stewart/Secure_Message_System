@@ -1,6 +1,6 @@
-# This is the Secure Message System Repo. (In development)
+# This is the Secure Message System Repo
 
-The goal is to utilize industry standard techniques to develop a secure messaging system where Alice can send Bob messages in an insecure channel such that the information sent over the channel is indecipherable to the attacker, Eve. Will highlight the procedure below and explain the main techniques incorporated such as **Hashing, Signing & Authentication, Key Ratcheting, Encryption & Decryption, and the Block Cipher Mode of Operation.**
+The goal is to utilize industry standard techniques to develop a secure messaging system where Alice can send Bob messages in an insecure channel such that the information sent over the channel is indecipherable to the attacker, Eve. Note that this is not something that should be used directly, but shows an implementation that encompases many cryptographic techniques and how to pair them together. Below, I also illustrate a simple attack and how this system handles it. Thus, I will highlight the procedure below and explain the main techniques incorporated such as **Hashing, Signing & Authentication, Key Ratcheting, Encryption & Decryption, and the Block Cipher Mode of Operation.** 
 
 # Architecture:
 
@@ -38,16 +38,21 @@ This cipher is apart of the family of lightweight block ciphers created by the N
 The key
 
 ## Block Cipher Mode of Operation - CTR:
+To ensure a strong encryption for messages larger than one block, it is important to include a Block Cipher Mode of Operation. A detailed explaination can be found (here)[https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation].
+Specifically in this mock messaging system I implemented CTR (short for counter) which involves XOR-ing a sequence of vectors with the plaintext and ciphertext blocks. 
 
 ## Decryption:
+After parsing the encrypted output Bob will use the agreed upon key to decrypt the message. This will reveal r,s to be used in the ECDSA signature verfication. If Bob can authenticate the messages authenticity he will store Alice's next public key and display the message. 
 
 ## Verification:
+Signature verification is one of many instances of Elliptic Curve Cryptography (ECC) used in this project, specially, ECDSA. Functionally, ECDSA and DSA provide the same security guarantees as they both reduce to the difficulty of solving the discrete log problem problem, yet ECDSA provides this security guarantee with far less bits. DSA's require key lengths of 3072 bits to provide 128 bits of security, ECDSA can accomplish the same with only 256-bit keys.
 
 ## Usage:
 To use simply pull in and run the main file - messenger.py - as seen below. 
 There is a display prompt that takes in user input to either encrypt or decrypt a message. Selecting either will require a file name to read or write from. Selecting E, will encrpt the message into a file using all the practices described above. Selecting D, will read from that file and will display the recovered message with a verifcation. If the message verification is False, then the message recovered has been tampered with. In this case, the message "Hello Bob!" is encrypted into the file "first_message.txt". Immeadiately afterwards, D(ecrypt) is selected for the file "first_message.txt". The cipher text contained in the file is then displayed and then the process of decryption follows. Once completed, the recovered message and verification. is displayed. 
 <img src="https://github.com/Donnie-Stewart/Secure_Message_System/blob/main/first_msg.png" align="center"
       width="1000" height="400">
+      
 ## Tampered File Example:
 One security guarantee of this system includes determining whether files are tampered with before they are received. Below, the conversation is continued by encrypting another message "How are you?" to file "second_message". In between the completion of this command, and Decrypt, I manually went into the file and changed the last digit from a [5](https://github.com/Donnie-Stewart/Secure_Message_System/blob/main/untampered.png) to [4](https://github.com/Donnie-Stewart/Secure_Message_System/blob/main/tampered.png). As seen, this slightly currupts the recovered message and then causes the verification to fail. Verification is a vital security component when communicating over the internet. In this project, ECDSA ensures the authenticity of each message. 
 <img src="https://github.com/Donnie-Stewart/Secure_Message_System/blob/main/snd_msg.png" align="center"
