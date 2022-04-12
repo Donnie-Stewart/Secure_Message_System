@@ -34,7 +34,7 @@ To encrypt and decrypt Alice and Bob need to agree on a Key through the insecure
 
 ## Simon Block Cipher:
 
-This cipher is apart of the family of lightweight block ciphers created by the NSA. This algorithm has been rigorously tested and is considered to be secure. This cipher is utilized to create the ciphertext blocks to XOR with the plaintext. Essentially, it is used to create a key stream for every block which depends on the size of the message being sent. (And this system can accept arbitrary lengths). 
+This cipher is a part of the family of lightweight block ciphers created by the NSA. This algorithm has been rigorously tested and is considered to be secure. This cipher is utilized to create the ciphertext blocks to XOR with the plaintext. Essentially, it is used to create a key stream for every block which depends on the size of the message being sent. (And this system can accept arbitrary lengths). 
 
 ## Block Cipher Mode of Operation - CTR:
 To ensure a strong encryption for messages larger than one block, it is important to include a Block Cipher Mode of Operation. A detailed explaination can be found [here](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation).
@@ -44,7 +44,7 @@ Specifically in this mock messaging system I implemented CTR (short for counter)
 After parsing the encrypted output Bob will use the agreed upon key to decrypt the message. This will reveal r,s to be used in the ECDSA signature verfication. If Bob can authenticate the messages authenticity he will store Alice's next public key and display the message. 
 
 ## Verification:
-Signature verification is one of many instances of Elliptic Curve Cryptography (ECC) used in this project, specially, ECDSA. Functionally, ECDSA and DSA provide the same security guarantees as they both reduce to the difficulty of solving the discrete log problem problem, yet ECDSA provides this security guarantee with far less bits. DSA's require key lengths of 3072 bits to provide 128 bits of security, ECDSA can accomplish the same with only 256-bit keys.
+Signature verification is one of many instances of Elliptic Curve Cryptography (ECC) used in this project, specially, ECDSA. Functionally, ECDSA and DSA provide the same security guarantees as they both reduce to the difficulty of solving the discrete log problem problem, yet ECDSA provides this security guarantee with far less bits. DSA requires key lengths of 3072 bits to provide 128 bits of security, ECDSA can accomplish the same with only 256-bit keys.
 
 ## Usage:
 To use simply pull in and run the main file - messenger.py - as seen below. 
@@ -58,4 +58,4 @@ One security guarantee of this system includes determining whether files are tam
       width="1000" height="400">
 ## Credits:
 
-All the code written is my own unless explicitly specified in the code. System archicture diagram from Graduate Computer Science coursework at UCSC - CSE 234 Cryptography by [Professor Darrell Long](https://darrelllong.github.io/) and [James Hughes](https://users.soe.ucsc.edu/~japhughe/)
+All the code written is my own unless explicitly specified in the code. System archicture diagram used from Graduate Computer Science coursework at UCSC - CSE 234 "Cryptography" by [Professor Darrell Long](https://darrelllong.github.io/) and [James Hughes](https://users.soe.ucsc.edu/~japhughe/)
