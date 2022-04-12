@@ -37,7 +37,7 @@ To encrypt and decrypt Alice and Bob need to agree on a Key through the insecure
 This cipher is apart of the family of lightweight block ciphers created by the NSA. This algorithm has been rigorously tested and is considered to be secure. This cipher is utilized to create the ciphertext blocks to XOR with the plaintext. Essentially, it is used to create a key stream for every block which depends on the size of the message being sent. (And this system can accept arbitrary lengths). 
 
 ## Block Cipher Mode of Operation - CTR:
-To ensure a strong encryption for messages larger than one block, it is important to include a Block Cipher Mode of Operation. A detailed explaination can be found (here)[https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation].
+To ensure a strong encryption for messages larger than one block, it is important to include a Block Cipher Mode of Operation. A detailed explaination can be found [here](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation).
 Specifically in this mock messaging system I implemented CTR (short for counter) which involves XOR-ing a sequence of vectors with the plaintext and ciphertext blocks. 
 
 ## Decryption:
@@ -58,4 +58,4 @@ One security guarantee of this system includes determining whether files are tam
       width="1000" height="400">
 ## Credits:
 
-All the code written is my own unless explicitly specified in the code. System archicture diagram from Graduate Computer Science coursework at UCSC - CSE 234 Cryptography by (Professor Darrell Long)[https://darrelllong.github.io/] and (James Hughes)[https://users.soe.ucsc.edu/~japhughe/]
+All the code written is my own unless explicitly specified in the code. System archicture diagram from Graduate Computer Science coursework at UCSC - CSE 234 Cryptography by [Professor Darrell Long](https://darrelllong.github.io/) and [James Hughes](https://users.soe.ucsc.edu/~japhughe/)
